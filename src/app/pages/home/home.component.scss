@@ -1,0 +1,17 @@
+.page-container{
+    padding: 80px 40px;
+    min-height: 100vh;
+    background-color: lightcoral;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch ;
+    .shop {
+        background: lightblue;
+        flex-basis:70%;
+    }
+
+    .cart {
+        background: lightgreen;
+        flex-basis:30%;
+    }
+}
