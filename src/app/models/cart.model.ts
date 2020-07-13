@@ -1,6 +1,6 @@
 export class CartModel {
-    cartId: String
-    name: String
+    cartId: string
+    name: string
     count: number
     costPerItem:number
     totalCost:number

@@ -17,7 +17,6 @@ export class FruitcardComponent implements OnInit {
   constructor(private cartService: CartService) {
   }
 
-
   ngOnInit(): void {
     this.count = 0;
 
@@ -33,11 +32,7 @@ export class FruitcardComponent implements OnInit {
 
   addToCart(): void {
     this.cartService.addToCart("1", this.fruit, this.count).subscribe(() => {
-      console.log("Sucess");
       this.cartService.update.next(true)
     })
   }
-
-
-
 }

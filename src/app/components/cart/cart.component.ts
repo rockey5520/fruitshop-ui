@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 import { CartModel } from './../../models/cart.model';
 import { CartService } from './../../services/cart.service';
-import { Observable } from 'rxjs';
-import { map, reduce } from 'rxjs/operators';
+import { PaymentService } from './../../services/payment.service';
+import { Observable, pipe } from 'rxjs';
+import { map, reduce, filter, first } from 'rxjs/operators';
+import { async } from 'rxjs/internal/scheduler/async';
 
 
 @Component({
@@ -14,16 +16,20 @@ import { map, reduce } from 'rxjs/operators';
 export class CartComponent implements OnInit {
 
   cartList: Observable<Array<CartModel>>;
+  displayedColumns: string[] = ['name', 'costPerItem', 'count', 'totalCost'];
   total: number;
+  
 
-
-  constructor(private cartService: CartService) {
-
-  }
+  constructor(public cartService: CartService, public paymentService: PaymentService) { }
 
   ngOnInit(): void {
     this.updateData()
     this.cartService.update.subscribe((data: boolean) => {
+      if (data) {
+        this.updateData();
+      }
+    })
+    this.paymentService.update.subscribe((data: boolean) => {
       if (data) {
         this.updateData();
       }
@@ -36,10 +42,18 @@ export class CartComponent implements OnInit {
     this.cartList.subscribe((data) => {
       this.total = data.map(item => item.totalCost).reduce((a, b) => a + b, 0);
     })
+
   }
 
+  
+  pay(): void {
+    this.cartList.subscribe((data) => {
+      const cartId =  data.map(item => item.cartId).shift();
+      this.paymentService.pay("11", cartId, this.total).subscribe(() => {
+        this.paymentService.update.next(true)
+      })
+    })
+    
+  }
 
-  // public getCartTotal():Observable<number> {
-  //   return this.cartList.pipe(map(item => item.reduce((total, item) => total + item.totalCost, 0)));
-  // }
 }
