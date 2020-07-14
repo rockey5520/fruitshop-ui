@@ -10,6 +10,21 @@ import { ShopComponent } from './components/shop/shop.component';
 import { CartComponent } from './components/cart/cart.component';
 import { FruitcardComponent } from './components/fruitcard/fruitcard.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AlertComponent } from './components/alert/alert.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+// used to create fake backend
+//import { fakeBackendProvider } from './_helpers';
+
+import { ErrorInterceptor } from '../app/helpers/error.interceptor';
+import { HeaderComponent } from './components/header/header.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { RegisterPageComponent } from './pages/register-page/register-page.component';
+import { PaymentComponent } from './components/payment/payment.component';
+
 
 @NgModule({
   declarations: [
@@ -17,15 +32,29 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     ShopComponent,
     CartComponent,
-    FruitcardComponent
+    FruitcardComponent,
+    AlertComponent,
+    LoginComponent,
+    RegisterComponent,
+    HeaderComponent,
+    LoginPageComponent,
+    RegisterPageComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularMaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+    // provider used to create fake backend
+    //fakeBackendProvider
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

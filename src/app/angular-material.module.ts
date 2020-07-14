@@ -7,7 +7,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
-
+import {MatToolbarModule} from '@angular/material/toolbar';
 @NgModule({
   declarations: [],
   imports: [
@@ -18,7 +18,8 @@ import {MatTableModule} from '@angular/material/table';
     MatButtonModule,
     MatListModule,
     MatIconModule,
-    MatTableModule
+    MatTableModule,
+    MatToolbarModule
   ],
   exports: [
     MatSliderModule,
@@ -27,7 +28,8 @@ import {MatTableModule} from '@angular/material/table';
     MatButtonModule,
     MatListModule,
     MatIconModule,
-    MatTableModule
+    MatTableModule,
+    MatToolbarModule
   ]
 })
 export class AngularMaterialModule { }

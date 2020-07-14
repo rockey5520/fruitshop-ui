@@ -32,4 +32,14 @@ export class PaymentService {
 
     return this.http.post(`/server/api/v1/payment/pay/${cartId}`, body, httpOptions)
   }
+
+  public applyDiscount(userId: string){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    }
+
+    return this.http.post(`/server/api/v1/coup/${userId}`, httpOptions)
+  }
 }

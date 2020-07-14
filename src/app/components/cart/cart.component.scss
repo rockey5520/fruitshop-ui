@@ -6,9 +6,16 @@
 }
 
 .mat-list-item-content {
-    justify-content: space-between !important;
+    justify-content: right;
 }
 
 table {
     width: 100%;
   }
+
+  .mat-card{
+    background-color:#ff9800;
+    padding:5px !important;
+  }
+
+  

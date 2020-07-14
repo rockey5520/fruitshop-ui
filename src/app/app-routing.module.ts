@@ -1,11 +1,20 @@
+import { PaymentComponent } from './components/payment/payment.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
+import { AuthGuard } from '../app/helpers/auth.guard';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { RegisterPageComponent } from './pages/register-page/register-page.component';
 
 
 const routes: Routes = [
-  {path: 'home' , component: HomeComponent},
-  {path: '**',  redirectTo: '/home',  pathMatch: 'full'},
+  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginPageComponent },
+  { path: 'register', component: RegisterPageComponent },
+  { path: 'pay', component: PaymentComponent },
+
+  // otherwise redirect to home
+  { path: '**', redirectTo: '/', pathMatch: 'full' }
 ];
 
 @NgModule({
@@ -13,6 +22,6 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 
-export class AppRoutingModule { 
+export class AppRoutingModule {
 
 }
