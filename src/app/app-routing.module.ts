@@ -1,4 +1,4 @@
-import { PaymentComponent } from './components/payment/payment.component';
+
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
@@ -11,8 +11,6 @@ const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginPageComponent },
   { path: 'register', component: RegisterPageComponent },
-  { path: 'pay', component: PaymentComponent },
-
   // otherwise redirect to home
   { path: '**', redirectTo: '/', pathMatch: 'full' }
 ];

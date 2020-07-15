@@ -1,3 +1,4 @@
+import { FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 import { CartModel } from './../../models/cart.model';
@@ -115,6 +116,8 @@ export class CartComponent implements OnInit {
     10000);
     
   }
+
+  
   
 }
 

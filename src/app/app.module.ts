@@ -23,7 +23,7 @@ import { ErrorInterceptor } from '../app/helpers/error.interceptor';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
-import { PaymentComponent } from './components/payment/payment.component';
+
 
 
 @NgModule({
@@ -39,7 +39,7 @@ import { PaymentComponent } from './components/payment/payment.component';
     HeaderComponent,
     LoginPageComponent,
     RegisterPageComponent,
-    PaymentComponent
+    
   ],
   imports: [
     BrowserModule,
